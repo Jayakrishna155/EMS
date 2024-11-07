@@ -1,0 +1,20 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <header style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;border-bottom: 1px solid slategrey;margin: 0 16px;">
+        <div>
+            <h1>Blogs</h1>
+        </div>
+        <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width: 15%;text-decoration: none;">
+            <a style="text-decoration: none;color: black;" href="#">Home</a>
+            <a style="text-decoration: none;color: black;" href="/about">About</a>
+            <a style="text-decoration: none;color: black;" href="/create">Create</a>
+        </div>
+    </header>
+    <h1>Blogs</h1>
+     <% blogs.forEach(blog => { %>
+        <h3><%=blog.title%></h3>
+        <p><%=blog.content%></p>
+     <% }); %>
+     <%- include('./includes/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5em;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.8em;
+            border: none;
+            background-color: #5a67d8;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4c51bf;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <!-- Form -->
+        <form action="/login" method="POST">
+            <label for="sno">Serial Number:</label>
+            <input type="text" id="sno" name="f_sno" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="f_userName" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="f_Pwd" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <div class="error">
+            <!-- Error message will go here if login fails -->
+            <!-- Example error message: Invalid login credentials -->
+        </div>
+    </div>
+
+    <script>
+        // Example of handling the form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            // Optionally you can add some client-side validation or logic here
+        });
+    </script>
+</body>
+</html>

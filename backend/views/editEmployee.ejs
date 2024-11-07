@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+    <style>
+        /* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ddd;
+}
+
+/* Main Content Styling */
+main {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 16px;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select,
+form input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form select:focus,
+form input[type="file"]:focus {
+    border-color: #333;
+}
+
+form button {
+    padding: 12px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Image Styling */
+.emp-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+/* Current Image Text Styling */
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/employees">Employee List</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Edit Employee</h1>
+        <form action="/edit/<%= employee._id %>" method="POST" enctype="multipart/form-data">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%= employee.name %>" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<%= employee.email %>" required>
+
+            <label for="mobileNo">Mobile No</label>
+            <input type="text" name="mobileNo" id="mobileNo" value="<%= employee.mobileNo %>" required>
+
+            <label for="designation">Designation</label>
+            <select name="designation" id="designation" required>
+                <option value="HR" <%= employee.designation === 'HR' ? 'selected' : '' %>>HR</option>
+                <option value="Manager" <%= employee.designation === 'Manager' ? 'selected' : '' %>>Manager</option>
+                <option value="Sales" <%= employee.designation === 'Sales' ? 'selected' : '' %>>Sales</option>
+            </select>
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="M" <%= employee.gender === 'M' ? 'selected' : '' %>>Male</option>
+                <option value="F" <%= employee.gender === 'F' ? 'selected' : '' %>>Female</option>
+            </select>
+
+            <label for="courses">Courses</label>
+            <select name="courses" id="courses" multiple required>
+                <option value="MCA" <%= employee.courses.includes('MCA') ? 'selected' : '' %>>MCA</option>
+                <option value="BCA" <%= employee.courses.includes('BCA') ? 'selected' : '' %>>BCA</option>
+                <option value="BSC" <%= employee.courses.includes('BSC') ? 'selected' : '' %>>BSC</option>
+                <option value="BTECH" <%= employee.courses.includes('BTECH') ? 'selected' : '' %>>BTECH</option>
+            </select>
+
+            <label for="imgUpload">Image</label>
+            <input type="file" name="imgUpload" id="imgUpload">
+            <p>Current Image: <img src="/uploads/<%= employee.imgUpload %>" alt="<%= employee.name %>" class="emp-img"></p>
+
+            <button type="submit">Update Employee</button>
+        </form>
+    </main>
+</body>
+</html>
